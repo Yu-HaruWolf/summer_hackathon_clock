@@ -23,13 +23,6 @@ class _YouTubePlayerWidgetState extends State<YouTubePlayerWidget> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: YoutubePlayer(
-                controller: _controller,
-                aspectRatio: 16 / 9,
-              ),
-            ),
-            Padding(
               padding: const EdgeInsets.all(8.0),
               child: Form(
                   key: _formKey,
@@ -38,18 +31,27 @@ class _YouTubePlayerWidgetState extends State<YouTubePlayerWidget> {
                       Expanded(
                           child: TextField(
                         controller: _textEditingContoroller,
+                        decoration:
+                            InputDecoration(hintText: 'Enter the video ID'),
                       )),
                       ElevatedButton.icon(
                         onPressed: () {
                           _controller.loadVideoById(
                               videoId: _textEditingContoroller.text);
                         },
-                        label: Text('Send'),
-                        icon: Icon(Icons.send),
+                        label: Text('Play'),
+                        icon: Icon(Icons.play_arrow),
                       ),
                     ],
                   )),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: YoutubePlayer(
+                controller: _controller,
+                aspectRatio: 16 / 9,
+              ),
+            ),
           ],
         ),
       ),

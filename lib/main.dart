@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     playerVisible = !playerVisible;
                   });
                 },
-                child: Text('Toggle')),
+                child: Text('YouTube')),
             Visibility(visible: playerVisible, child: YouTubePlayerWidget())
           ],
         ),
