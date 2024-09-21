@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: YouTubePlayerWidget(),
+      home: MyHomePage(),
     );
   }
 }
@@ -42,6 +42,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late DateTime _time;
   late Timer _timer;
+  bool playerVisible = false;
 
   @override
   void initState() {
@@ -63,20 +64,30 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Stack(
-            alignment: const FractionalOffset(0.2, 0.85),
-            children: [
-              Image.asset('assets/images/hackathonimg1-2.jpg'),
-              FittedBox(
-                child: Text(widget.dateFormat.format(_time),
-                    style: widget.clockStyle),
-              ),
-            ],
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Stack(
+              alignment: const FractionalOffset(0.2, 0.85),
+              children: [
+                Image.asset('assets/images/hackathonimg1-2.jpg'),
+                FittedBox(
+                  child: Text(widget.dateFormat.format(_time),
+                      style: widget.clockStyle),
+                ),
+              ],
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    playerVisible = !playerVisible;
+                  });
+                },
+                child: Text('Toggle')),
+            Visibility(visible: playerVisible, child: YouTubePlayerWidget())
+          ],
+        ),
       ),
     );
   }
