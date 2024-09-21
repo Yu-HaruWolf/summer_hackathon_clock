@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:summer_hackathon_clock/youtube.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,10 +17,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'GDSC Japan Summer Hackathon',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
+      home: YouTubePlayerWidget(),
     );
   }
 }
